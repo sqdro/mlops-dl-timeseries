@@ -1,0 +1,54 @@
+data_path: data/train.csv
+checkpoint_dir: checkpoints
+
+experiment_name: "TCN"
+
+features:
+  - feature_AA
+  - feature_AB
+  - feature_BA
+  - feature_BB
+  - feature_CA
+  - feature_CB
+  - sin_month
+  - cos_month
+
+target: Temperature
+
+train_ratio: 0.7
+encoder_length: 32
+decoder_length: 7
+batch_size: 128
+quantiles:
+  - 0.1
+  - 0.25
+  - 0.5
+  - 0.75
+  - 0.95
+
+max_epochs: 25
+patience: 5
+min_delta: 0.0001
+gradient_clip_val: 1.0
+model_to_train: tcn
+
+model_configs:
+  mlp:
+    hidden_size: 24
+    lr: 0.0001
+  lstm:
+    hidden_size: 24
+    num_layers: 1
+    lr: 0.0001
+  gru:
+    hidden_size: 24
+    num_layers: 1
+    lr: 0.0001
+  tcn:
+    hidden_size: 24
+    lr: 0.0001
+  transformer:
+    hidden_size: 24
+    num_heads: 2
+    num_layers: 1
+    lr: 0.0001
