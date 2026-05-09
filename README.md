@@ -37,23 +37,23 @@ Acceder a la documentación interactiva en:
 http://localhost:8000/docs
 ```
 
-## 3. Dockerización
+### 3. Dockerización
 
 El proyecto se puede ejecutar con el `Dockerfile` del repositorio.
 
-### Build de la imagen
+#### Build de la imagen
 
 ```bash
 docker build -t dl-timeseries .
 ```
 
-### Ejecutar la API
+#### Ejecutar la API
 
 ```bash
 docker run --rm -p 8000:8000 -v "%cd%/checkpoints:/app/checkpoints" dl-timeseries
 ```
 
-### Ejecutar entrenamiento dentro del contenedor
+#### Ejecutar entrenamiento dentro del contenedor
 
 ```bash
 docker run --rm \
@@ -64,7 +64,7 @@ docker run --rm \
   dl-timeseries -m src.main --config config/config_lstm.yaml
 ```
 
-## 4. Tests
+### 4. Tests
 
 ```bash
 pytest tests/ -v
