@@ -8,7 +8,7 @@ Predicción de series temporales con distintas arquitecturas de redes neuronales
 - GitHub: https://github.com/sqdro/mlops-dl-timeseries
 - Weights & Biases: https://wandb.ai/sergio-escudero-upm/TimeSeriesForecasting
   - Report W&B (Entrenamiento): https://api.wandb.ai/links/sergio-escudero-upm/4wul7jrs
-  - Report W&B (Precciones): https://wandb.ai/sergio-escudero-upm/TimeSeriesForecasting/reports/Predicciones-de-la-serie-por-modelo--VmlldzoxNjgyNTc1NA?accessToken=a89xy08jsc7vdijftd3kdrryu7v0nd5ww2qmvwuv940dtn6sy4w5jge96pa6d85p
+  - Report W&B (Prediccciones): https://wandb.ai/sergio-escudero-upm/TimeSeriesForecasting/reports/Predicciones-de-la-serie-por-modelo--VmlldzoxNjgyNTc1NA?accessToken=a89xy08jsc7vdijftd3kdrryu7v0nd5ww2qmvwuv940dtn6sy4w5jge96pa6d85p
 
 ---
 
@@ -79,6 +79,17 @@ Tests disponibles:
 
 ## Estructura del Proyecto
 
+- Código original en `notebook/`.
+- Carpeta `src/` contiene:
+  - `main.py`: módulo principal para ejecutar el pipeline del entrenamiento del modelo elegido.
+  - `train.py`, `losses.py`, `predict.py`, `plots.py`: módulos con el entrenamiento, evaluación y predicción del modelo elegido.
+  - `utils.py`: módulo con funciones generales para los distintos módulos.
+  - `api_inference.py`: módulo con la configuración de la API de inferencia.
+- Carpeta `data/` contiene el conjunto de datos en formato CSV y el módulo del procesamiento de este.
+- Carpeta `models/` contiene la estructura de cada modelo.
+- Carpeta `config/` contiene las rutas e hiperparámetros del proyecto, así como los parámetros de cada modelo.
+- Carpeta `tests/` contiene los módulos con los test a ejecutar.
+
 ```
 .
 ├── notebooks/
@@ -144,7 +155,7 @@ Los archivos de configuración están en `config/`. Cada uno define las rutas de
 - `decoder_length`: longitud en el decoder
 - `batch_size`: tamaño de batch
 - `quantiles`: cuantiles a predecir
-- `model_to_train`: modelo a entrenar
+- `model_to_train`: modelo a entrenar (a elegir entre `mlp`, `lstm`, `gru`, `tcn` y `transformer`)
 
 ---
 
@@ -203,7 +214,7 @@ Ejemplo de salida:
 
 ---
 
-## 📝 Logs
+## Logs
 
 - **Training logs**: `logs/model.log`
 - **API logs**: `logs/api.log`
